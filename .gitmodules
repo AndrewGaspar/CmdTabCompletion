@@ -1,0 +1,3 @@
+[submodule "git/Git.PS"]
+	path = git/Git.PS
+	url = git@github.com:AndrewGaspar/Git.PS.git

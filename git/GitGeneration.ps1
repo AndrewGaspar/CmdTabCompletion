@@ -12,7 +12,10 @@ if(!$completionLocation)
     $completionLocation = Join-Path $scriptPath "Git.Completion.json"
 }
 
-Import-Module "$scriptPath\mod\Git.Reflection.psm1"
+if(!(Get-Module Git.PS))
+{
+    Import-Module "$scriptPath\Git.PS\mod\Git.PS"
+}
 
 $preGeneration = Get-Content $preGenerationLocation | ConvertFrom-Json
 
