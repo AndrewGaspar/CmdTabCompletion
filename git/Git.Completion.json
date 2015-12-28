@@ -2928,9 +2928,35 @@
                                                 "tooltip":  "use notes from \u003cnotes-ref\u003e",
                                                 "argument_type":  "notes-ref"
                                             },
-                             "sub_commands":  {
-                                                  "command":  "merge"
-                                              }
+                             "sub_commands":  [
+                                                  {
+                                                      "command":  "add"
+                                                  },
+                                                  {
+                                                      "command":  "append"
+                                                  },
+                                                  {
+                                                      "command":  "copy"
+                                                  },
+                                                  {
+                                                      "command":  "edit"
+                                                  },
+                                                  {
+                                                      "command":  "get-ref"
+                                                  },
+                                                  {
+                                                      "command":  "merge"
+                                                  },
+                                                  {
+                                                      "command":  "prune"
+                                                  },
+                                                  {
+                                                      "command":  "remove"
+                                                  },
+                                                  {
+                                                      "command":  "show"
+                                                  }
+                                              ]
                          },
                          {
                              "command":  "p4"
@@ -3628,6 +3654,12 @@
                                                   },
                                                   {
                                                       "command":  "set-url"
+                                                  },
+                                                  {
+                                                      "command":  "show"
+                                                  },
+                                                  {
+                                                      "command":  "update"
                                                   }
                                               ]
                          },
@@ -4444,7 +4476,33 @@
                                             ]
                          },
                          {
-                             "command":  "submodule"
+                             "command":  "submodule",
+                             "sub_commands":  [
+                                                  {
+                                                      "command":  "add"
+                                                  },
+                                                  {
+                                                      "command":  "deinit"
+                                                  },
+                                                  {
+                                                      "command":  "foreach"
+                                                  },
+                                                  {
+                                                      "command":  "init"
+                                                  },
+                                                  {
+                                                      "command":  "status"
+                                                  },
+                                                  {
+                                                      "command":  "summary"
+                                                  },
+                                                  {
+                                                      "command":  "sync"
+                                                  },
+                                                  {
+                                                      "command":  "update"
+                                                  }
+                                              ]
                          },
                          {
                              "command":  "subtree",
