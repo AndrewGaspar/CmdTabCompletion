@@ -403,7 +403,42 @@
                                             ]
                          },
                          {
-                             "command":  "bisect"
+                             "command":  "bisect",
+                             "sub_commands":  [
+                                                  {
+                                                      "command":  "bad"
+                                                  },
+                                                  {
+                                                      "command":  "good"
+                                                  },
+                                                  {
+                                                      "command":  "help"
+                                                  },
+                                                  {
+                                                      "command":  "log"
+                                                  },
+                                                  {
+                                                      "command":  "next"
+                                                  },
+                                                  {
+                                                      "command":  "replay"
+                                                  },
+                                                  {
+                                                      "command":  "reset"
+                                                  },
+                                                  {
+                                                      "command":  "run"
+                                                  },
+                                                  {
+                                                      "command":  "skip"
+                                                  },
+                                                  {
+                                                      "command":  "start"
+                                                  },
+                                                  {
+                                                      "command":  "visualize"
+                                                  }
+                                              ]
                          },
                          {
                              "command":  "bisect--helper",
@@ -625,7 +660,21 @@
                                             ]
                          },
                          {
-                             "command":  "bundle"
+                             "command":  "bundle",
+                             "sub_commands":  [
+                                                  {
+                                                      "command":  "create"
+                                                  },
+                                                  {
+                                                      "command":  "list-heads"
+                                                  },
+                                                  {
+                                                      "command":  "unbundle"
+                                                  },
+                                                  {
+                                                      "command":  "verify"
+                                                  }
+                                              ]
                          },
                          {
                              "command":  "cat-file",
@@ -2878,7 +2927,10 @@
                                                 "name":  "--ref",
                                                 "tooltip":  "use notes from \u003cnotes-ref\u003e",
                                                 "argument_type":  "notes-ref"
-                                            }
+                                            },
+                             "sub_commands":  {
+                                                  "command":  "merge"
+                                              }
                          },
                          {
                              "command":  "p4"
@@ -3554,7 +3606,30 @@
                                                 "name":  "--verbose",
                                                 "tooltip":  "be verbose; must be placed before a subcommand",
                                                 "alias":  "-v"
-                                            }
+                                            },
+                             "sub_commands":  [
+                                                  {
+                                                      "command":  "add"
+                                                  },
+                                                  {
+                                                      "command":  "prune"
+                                                  },
+                                                  {
+                                                      "command":  "remove"
+                                                  },
+                                                  {
+                                                      "command":  "rename"
+                                                  },
+                                                  {
+                                                      "command":  "set-branches"
+                                                  },
+                                                  {
+                                                      "command":  "set-head"
+                                                  },
+                                                  {
+                                                      "command":  "set-url"
+                                                  }
+                                              ]
                          },
                          {
                              "command":  "remote-ext"
@@ -4278,7 +4353,24 @@
                              "aliased_to":  "add"
                          },
                          {
-                             "command":  "stash"
+                             "command":  "stash",
+                             "sub_commands":  [
+                                                  {
+                                                      "command":  "branch"
+                                                  },
+                                                  {
+                                                      "command":  "clear"
+                                                  },
+                                                  {
+                                                      "command":  "drop"
+                                                  },
+                                                  {
+                                                      "command":  "list"
+                                                  },
+                                                  {
+                                                      "command":  "show"
+                                                  }
+                                              ]
                          },
                          {
                              "command":  "status",
@@ -4410,7 +4502,24 @@
                                                     "name":  "--squash",
                                                     "tooltip":  "merge subtree changes as a single commit"
                                                 }
-                                            ]
+                                            ],
+                             "sub_commands":  [
+                                                  {
+                                                      "command":  "add"
+                                                  },
+                                                  {
+                                                      "command":  "merge"
+                                                  },
+                                                  {
+                                                      "command":  "pull"
+                                                  },
+                                                  {
+                                                      "command":  "push"
+                                                  },
+                                                  {
+                                                      "command":  "split"
+                                                  }
+                                              ]
                          },
                          {
                              "command":  "svn"
@@ -4748,7 +4857,15 @@
                                             ]
                          },
                          {
-                             "command":  "worktree"
+                             "command":  "worktree",
+                             "sub_commands":  [
+                                                  {
+                                                      "command":  "add"
+                                                  },
+                                                  {
+                                                      "command":  "prune"
+                                                  }
+                                              ]
                          },
                          {
                              "command":  "write-tree",

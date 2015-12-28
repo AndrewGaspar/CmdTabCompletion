@@ -76,6 +76,13 @@ function TransformGitCommand($gitCommand)
         {
             $command_obj | Add-Member -NotePropertyName parameters -NotePropertyValue $parameters
         }
+        
+        $sub_commands = $gitCommand.SubCommands | Where-Object { $_ } | ForEach-Object { TransformGitCommand $_ }
+        
+        if($sub_commands)
+        {
+            $command_obj | Add-Member -NotePropertyName sub_commands -NotePropertyValue $sub_commands
+        }
     }
     
     $command_obj
