@@ -65,7 +65,8 @@
                                                     "name":  "--ignore-missing",
                                                     "tooltip":  "check if - even missing - files are ignored in dry run"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] [--] \u003cpathspec\u003e..."
                          },
                          {
                              "command":  "add--interactive"
@@ -213,7 +214,11 @@
                                                     "argument_type":  "key-id",
                                                     "argument_optional":  true
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[\u003coptions\u003e] [(\u003cmbox\u003e|\u003cMaildir\u003e)...]",
+                                           "[\u003coptions\u003e] (--continue | --skip | --abort)"
+                                       ]
                          },
                          {
                              "command":  "annotate",
@@ -340,10 +345,12 @@
                                                     "tooltip":  "prepend \u003croot\u003e to all filenames",
                                                     "argument_type":  "root"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] [\u003cpatch\u003e...]"
                          },
                          {
-                             "command":  "archimport"
+                             "command":  "archimport",
+                             "usage":  "# fetch/update GIT from Arch"
                          },
                          {
                              "command":  "archive",
@@ -400,16 +407,24 @@
                                                     "tooltip":  "path to the remote git-upload-archive command",
                                                     "argument_type":  "command"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[\u003coptions\u003e] \u003ctree-ish\u003e [\u003cpath\u003e...]",
+                                           "--list",
+                                           "--remote \u003crepo\u003e [--exec \u003ccmd\u003e] [\u003coptions\u003e] \u003ctree-ish\u003e [\u003cpath\u003e...]",
+                                           "--remote \u003crepo\u003e [--exec \u003ccmd\u003e] --list"
+                                       ]
                          },
                          {
                              "command":  "bisect",
                              "sub_commands":  [
                                                   {
-                                                      "command":  "bad"
+                                                      "command":  "bad",
+                                                      "usage":  "[\u003crev\u003e]"
                                                   },
                                                   {
-                                                      "command":  "good"
+                                                      "command":  "good",
+                                                      "usage":  "[\u003crev\u003e...]"
                                                   },
                                                   {
                                                       "command":  "help"
@@ -421,24 +436,30 @@
                                                       "command":  "next"
                                                   },
                                                   {
-                                                      "command":  "replay"
+                                                      "command":  "replay",
+                                                      "usage":  "\u003clogfile\u003e"
                                                   },
                                                   {
-                                                      "command":  "reset"
+                                                      "command":  "reset",
+                                                      "usage":  "[\u003ccommit\u003e]"
                                                   },
                                                   {
-                                                      "command":  "run"
+                                                      "command":  "run",
+                                                      "usage":  "\u003ccmd\u003e..."
                                                   },
                                                   {
-                                                      "command":  "skip"
+                                                      "command":  "skip",
+                                                      "usage":  "[(\u003crev\u003e|\u003crange\u003e)...]"
                                                   },
                                                   {
-                                                      "command":  "start"
+                                                      "command":  "start",
+                                                      "usage":  "[--no-checkout] [\u003cbad\u003e [\u003cgood\u003e...]] [--] [\u003cpathspec\u003e...]"
                                                   },
                                                   {
                                                       "command":  "visualize"
                                                   }
-                                              ]
+                                              ],
+                             "usage":  "[help|start|bad|good|skip|next|reset|visualize|replay|log|run]"
                          },
                          {
                              "command":  "bisect--helper",
@@ -451,7 +472,8 @@
                                                     "name":  "--no-checkout",
                                                     "tooltip":  "update BISECT_HEAD instead of checking out the current commit"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "--next-all [--no-checkout]"
                          },
                          {
                              "command":  "blame",
@@ -544,7 +566,8 @@
                                                     "argument_type":  "n",
                                                     "argument_optional":  true
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] [\u003crev-opts\u003e] [\u003crev\u003e] [--] \u003cfile\u003e"
                          },
                          {
                              "command":  "branch",
@@ -657,24 +680,40 @@
                                                     "argument_type":  "style",
                                                     "argument_optional":  true
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[\u003coptions\u003e] [-r | -a] [--merged | --no-merged]",
+                                           "[\u003coptions\u003e] [-l] [-f] \u003cbranch-name\u003e [\u003cstart-point\u003e]",
+                                           "[\u003coptions\u003e] [-r] (-d | -D) \u003cbranch-name\u003e...",
+                                           "[\u003coptions\u003e] (-m | -M) [\u003cold-branch\u003e] \u003cnew-branch\u003e"
+                                       ]
                          },
                          {
                              "command":  "bundle",
                              "sub_commands":  [
                                                   {
-                                                      "command":  "create"
+                                                      "command":  "create",
+                                                      "usage":  "\u003cfile\u003e \u003cgit-rev-list args\u003e"
                                                   },
                                                   {
-                                                      "command":  "list-heads"
+                                                      "command":  "list-heads",
+                                                      "usage":  "\u003cfile\u003e [\u003crefname\u003e...]"
                                                   },
                                                   {
-                                                      "command":  "unbundle"
+                                                      "command":  "unbundle",
+                                                      "usage":  "\u003cfile\u003e [\u003crefname\u003e...]"
                                                   },
                                                   {
-                                                      "command":  "verify"
+                                                      "command":  "verify",
+                                                      "usage":  "\u003cfile\u003e"
                                                   }
-                                              ]
+                                              ],
+                             "usage":  [
+                                           "create \u003cfile\u003e \u003cgit-rev-list args\u003e",
+                                           "verify \u003cfile\u003e",
+                                           "list-heads \u003cfile\u003e [\u003crefname\u003e...]",
+                                           "unbundle \u003cfile\u003e [\u003crefname\u003e...]"
+                                       ]
                          },
                          {
                              "command":  "cat-file",
@@ -727,7 +766,11 @@
                                                     "name":  "--batch-all-objects",
                                                     "tooltip":  "show all objects with --batch or --batch-check"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "(-t [--allow-unknown-type]|-s [--allow-unknown-type]|-e|-p|\u003ctype\u003e|--textconv) \u003cobject\u003e",
+                                           "(--batch | --batch-check) [--follow-symlinks]"
+                                       ]
                          },
                          {
                              "command":  "check-attr",
@@ -749,7 +792,11 @@
                                                     "name":  "-z",
                                                     "tooltip":  "terminate input and output records by a NUL character"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[-a | --all | \u003cattr\u003e...] [--] \u003cpathname\u003e...",
+                                           "--stdin [-z] [-a | --all | \u003cattr\u003e...]"
+                                       ]
                          },
                          {
                              "command":  "check-ignore",
@@ -781,14 +828,19 @@
                                                     "name":  "--no-index",
                                                     "tooltip":  "ignore index when checking"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[\u003coptions\u003e] \u003cpathname\u003e...",
+                                           "[\u003coptions\u003e] --stdin"
+                                       ]
                          },
                          {
                              "command":  "check-mailmap",
                              "parameters":  {
                                                 "name":  "--stdin",
                                                 "tooltip":  "also read contacts from stdin"
-                                            }
+                                            },
+                             "usage":  "[\u003coptions\u003e] \u003ccontact\u003e..."
                          },
                          {
                              "command":  "checkout",
@@ -868,7 +920,11 @@
                                                     "name":  "--ignore-other-worktrees",
                                                     "tooltip":  "do not check if another worktree is holding the given ref"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[\u003coptions\u003e] \u003cbranch\u003e",
+                                           "[\u003coptions\u003e] [\u003cbranch\u003e] -- \u003cfile\u003e..."
+                                       ]
                          },
                          {
                              "command":  "checkout-index",
@@ -920,10 +976,15 @@
                                                     "tooltip":  "copy out the files from named stage",
                                                     "argument_type":  "..."
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] [--] [\u003cfile\u003e...]"
                          },
                          {
-                             "command":  "check-ref-format"
+                             "command":  "check-ref-format",
+                             "usage":  [
+                                           "[--normalize] [\u003coptions\u003e] \u003crefname\u003e",
+                                           "--branch \u003cbranchname-shorthand\u003e"
+                                       ]
                          },
                          {
                              "command":  "cherry",
@@ -939,7 +1000,8 @@
                                                     "tooltip":  "be verbose",
                                                     "alias":  "-v"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[-v] [\u003cupstream\u003e [\u003chead\u003e [\u003climit\u003e]]]"
                          },
                          {
                              "command":  "cherry-pick",
@@ -1019,7 +1081,11 @@
                                                     "name":  "--keep-redundant-commits",
                                                     "tooltip":  "keep redundant, empty commits"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[\u003coptions\u003e] \u003ccommit-ish\u003e...",
+                                           "\u003csubcommand\u003e"
+                                       ]
                          },
                          {
                              "command":  "citool"
@@ -1065,7 +1131,8 @@
                                                     "name":  "-X",
                                                     "tooltip":  "remove only ignored files"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[-d] [-f] [-i] [-n] [-q] [-e \u003cpattern\u003e] [-x | -X] [--] \u003cpaths\u003e..."
                          },
                          {
                              "command":  "clone",
@@ -1170,7 +1237,8 @@
                                                     "tooltip":  "\u003ckey=value\u003e",
                                                     "alias":  "-c"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] [--] \u003crepo\u003e [\u003cdir\u003e]"
                          },
                          {
                              "command":  "column",
@@ -1211,7 +1279,8 @@
                                                     "tooltip":  "Padding space between columns",
                                                     "argument_type":  "n"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e]"
                          },
                          {
                              "command":  "commit",
@@ -1375,10 +1444,12 @@
                                                     "argument_type":  "mode",
                                                     "argument_optional":  true
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] [--] \u003cpathspec\u003e..."
                          },
                          {
-                             "command":  "commit-tree"
+                             "command":  "commit-tree",
+                             "usage":  "[(-p \u003csha1\u003e)...] [-S[\u003ckeyid\u003e]] [-m \u003cmessage\u003e] [-F \u003cfile\u003e] \u003csha1\u003e"
                          },
                          {
                              "command":  "config",
@@ -1493,7 +1564,8 @@
                                                     "name":  "--includes",
                                                     "tooltip":  "respect include directives on lookup"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e]"
                          },
                          {
                              "command":  "count-objects",
@@ -1508,7 +1580,8 @@
                                                     "tooltip":  "print sizes in human readable format",
                                                     "alias":  "-H"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[-v] [-H | --human-readable]"
                          },
                          {
                              "command":  "credential"
@@ -1523,13 +1596,15 @@
                              "command":  "cvsexportcommit"
                          },
                          {
-                             "command":  "cvsimport"
+                             "command":  "cvsimport",
+                             "usage":  "# fetch/update GIT from CVS"
                          },
                          {
                              "command":  "cvsserver"
                          },
                          {
-                             "command":  "daemon"
+                             "command":  "daemon",
+                             "usage":  "[--verbose] [--syslog] [--export-all]"
                          },
                          {
                              "command":  "describe",
@@ -1588,25 +1663,34 @@
                                                     "argument_type":  "mark",
                                                     "argument_optional":  true
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[\u003coptions\u003e] [\u003ccommit-ish\u003e...]",
+                                           "[\u003coptions\u003e] --dirty"
+                                       ]
                          },
                          {
-                             "command":  "diff"
+                             "command":  "diff",
+                             "usage":  "[\u003coptions\u003e] [\u003ccommit\u003e [\u003ccommit\u003e]] [--] [\u003cpath\u003e...]"
                          },
                          {
-                             "command":  "diff-files"
+                             "command":  "diff-files",
+                             "usage":  "[-q] [-0 | -1 | -2 | -3 | -c | --cc] [\u003ccommon-diff-options\u003e] [\u003cpath\u003e...]"
                          },
                          {
-                             "command":  "diff-index"
+                             "command":  "diff-index",
+                             "usage":  "[-m] [--cached] [\u003ccommon-diff-options\u003e] \u003ctree-ish\u003e [\u003cpath\u003e...]"
                          },
                          {
-                             "command":  "difftool"
+                             "command":  "difftool",
+                             "usage":  "[-t|--tool=\u003ctool\u003e] [--tool-help]"
                          },
                          {
                              "command":  "difftool--helper"
                          },
                          {
-                             "command":  "diff-tree"
+                             "command":  "diff-tree",
+                             "usage":  "[--stdin] [-m] [-c] [--cc] [-s] [-v] [--pretty] [-t] [-r] [--root] [\u003ccommon-diff-options\u003e] \u003ctree-ish\u003e [\u003ctree-ish\u003e] [\u003cpath\u003e...]"
                          },
                          {
                              "command":  "fast-export",
@@ -1661,10 +1745,12 @@
                                                     "name":  "--anonymize",
                                                     "tooltip":  "anonymize output"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[rev-list-opts]"
                          },
                          {
-                             "command":  "fast-import"
+                             "command":  "fast-import",
+                             "usage":  "[--date-format=\u003cf\u003e] [--max-pack-size=\u003cn\u003e] [--big-file-threshold=\u003cn\u003e] [--depth=\u003cn\u003e] [--active-branches=\u003cn\u003e] [--export-marks=\u003cmarks.file\u003e]"
                          },
                          {
                              "command":  "fetch",
@@ -1759,13 +1845,21 @@
                                                     "tooltip":  "specify fetch refmap",
                                                     "argument_type":  "refmap"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[\u003coptions\u003e] [\u003crepository\u003e [\u003crefspec\u003e...]]",
+                                           "[\u003coptions\u003e] \u003cgroup\u003e",
+                                           "--multiple [\u003coptions\u003e] [(\u003crepository\u003e | \u003cgroup\u003e)...]",
+                                           "--all [\u003coptions\u003e]"
+                                       ]
                          },
                          {
-                             "command":  "fetch-pack"
+                             "command":  "fetch-pack",
+                             "usage":  "[--all] [--stdin] [--quiet | -q] [--keep | -k] [--thin] [--include-tag] [--upload-pack=\u003cgit-upload-pack\u003e] [--depth=\u003cn\u003e] [--no-progress] [--diag-url] [-v] [\u003chost\u003e:]\u003cdirectory\u003e [\u003crefs\u003e...]"
                          },
                          {
-                             "command":  "filter-branch"
+                             "command":  "filter-branch",
+                             "usage":  "[--env-filter \u003ccommand\u003e] [--tree-filter \u003ccommand\u003e]"
                          },
                          {
                              "command":  "fmt-merge-msg",
@@ -1788,7 +1882,8 @@
                                                     "alias":  "-F",
                                                     "argument_type":  "file"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[-m \u003cmessage\u003e] [--log[=\u003cn\u003e] | --no-log] [--file \u003cfile\u003e]"
                          },
                          {
                              "command":  "for-each-ref",
@@ -1826,7 +1921,8 @@
                                                     "tooltip":  "field name to sort on",
                                                     "argument_type":  "key"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] [\u003cpattern\u003e]"
                          },
                          {
                              "command":  "format-patch",
@@ -1962,7 +2058,8 @@
                                                     "tooltip":  "don\u0027t print the patch filenames",
                                                     "alias":  "-q"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] [\u003csince\u003e | \u003crevision-range\u003e]"
                          },
                          {
                              "command":  "fsck",
@@ -2016,7 +2113,8 @@
                                                     "name":  "--progress",
                                                     "tooltip":  "show progress"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] [\u003cobject\u003e...]"
                          },
                          {
                              "command":  "fsck-objects",
@@ -2048,7 +2146,8 @@
                                                     "name":  "--force",
                                                     "tooltip":  "force running gc even if there may be another gc running"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e]"
                          },
                          {
                              "command":  "get-tar-commit-id"
@@ -2248,7 +2347,8 @@
                                                     "name":  "--ext-grep",
                                                     "tooltip":  "allow calling of grep(1) (ignored by this build)"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] [-e] \u003cpattern\u003e [\u003crev\u003e...] [[--] \u003cpath\u003e...]"
                          },
                          {
                              "command":  "gui"
@@ -2295,7 +2395,11 @@
                                                     "tooltip":  "process file as it were from this path",
                                                     "argument_type":  "file"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[-t \u003ctype\u003e] [-w] [--path=\u003cfile\u003e | --no-filters] [--stdin] [--] \u003cfile\u003e...",
+                                           "--stdin-paths"
+                                       ]
                          },
                          {
                              "command":  "help",
@@ -2325,16 +2429,19 @@
                                                     "tooltip":  "show info page",
                                                     "alias":  "-i"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[--all] [--guides] [--man | --web | --info] [\u003ccommand\u003e]"
                          },
                          {
                              "command":  "http-backend"
                          },
                          {
-                             "command":  "http-fetch"
+                             "command":  "http-fetch",
+                             "usage":  "[-c] [-t] [-a] [-v] [--recover] [-w ref] [--stdin] commit-id url"
                          },
                          {
-                             "command":  "http-push"
+                             "command":  "http-push",
+                             "usage":  "[--all] [--dry-run] [--force] [--verbose] \u003cremote\u003e [\u003chead\u003e...]"
                          },
                          {
                              "command":  "imap-send",
@@ -2353,10 +2460,12 @@
                                                     "name":  "--curl",
                                                     "tooltip":  "use libcurl to communicate with the IMAP server"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[-v] [-q] [--[no-]curl] \u003c \u003cmbox\u003e"
                          },
                          {
-                             "command":  "index-pack"
+                             "command":  "index-pack",
+                             "usage":  "[-v] [-o \u003cindex-file\u003e] [--keep | --keep=\u003cmsg\u003e] [--verify] [--strict] (\u003cpack-file\u003e | --stdin [--fix-thin] [\u003cpack-file\u003e])"
                          },
                          {
                              "command":  "init",
@@ -2386,7 +2495,8 @@
                                                     "tooltip":  "separate git dir from working tree",
                                                     "argument_type":  "gitdir"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[-q | --quiet] [--bare] [--template=\u003ctemplate-directory\u003e] [--shared[=\u003cpermissions\u003e]] [\u003cdirectory\u003e]"
                          },
                          {
                              "command":  "init-db",
@@ -2436,7 +2546,8 @@
                                                     "name":  "--restart",
                                                     "tooltip":  "restart the web server"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[options] (--start | --stop | --restart)"
                          },
                          {
                              "command":  "interpret-trailers",
@@ -2450,7 +2561,8 @@
                                                     "tooltip":  "trailer(s) to add",
                                                     "argument_type":  "trailer"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[--trim-empty] [(--trailer \u003ctoken\u003e[(=|:)\u003cvalue\u003e])...] [\u003cfile\u003e...]"
                          },
                          {
                              "command":  "log",
@@ -2478,7 +2590,11 @@
                                                     "name":  "-L",
                                                     "tooltip":  "\u003cn,m:file\u003e         Process line range n,m in file, counting from 1"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[\u003coptions\u003e] [\u003crevision-range\u003e] [[--] \u003cpath\u003e...]",
+                                           "[\u003coptions\u003e] \u003cobject\u003e..."
+                                       ]
                          },
                          {
                              "command":  "ls-files",
@@ -2591,10 +2707,12 @@
                                                     "name":  "--debug",
                                                     "tooltip":  "show debugging data"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] [\u003cfile\u003e...]"
                          },
                          {
-                             "command":  "ls-remote"
+                             "command":  "ls-remote",
+                             "usage":  "[--heads] [--tags]  [--upload-pack=\u003cexec\u003e]"
                          },
                          {
                              "command":  "ls-tree",
@@ -2642,13 +2760,16 @@
                                                     "argument_type":  "n",
                                                     "argument_optional":  true
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] \u003ctree-ish\u003e [\u003cpath\u003e...]"
                          },
                          {
-                             "command":  "mailinfo"
+                             "command":  "mailinfo",
+                             "usage":  "[-k | -b] [-m | --message-id] [-u | --encoding=\u003cencoding\u003e | -n] [--scissors | --no-scissors] \u003cmsg\u003e \u003cpatch\u003e \u003c mail \u003einfo"
                          },
                          {
-                             "command":  "mailsplit"
+                             "command":  "mailsplit",
+                             "usage":  "[-d\u003cprec\u003e] [-f\u003cn\u003e] [-b] [--keep-cr] -o\u003cdirectory\u003e [(\u003cmbox\u003e|\u003cMaildir\u003e)...]"
                          },
                          {
                              "command":  "merge",
@@ -2746,7 +2867,12 @@
                                                     "name":  "--overwrite-ignore",
                                                     "tooltip":  "update ignored files (default)"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[\u003coptions\u003e] [\u003ccommit\u003e...]",
+                                           "[\u003coptions\u003e] \u003cmsg\u003e HEAD \u003ccommit\u003e",
+                                           "--abort"
+                                       ]
                          },
                          {
                              "command":  "merge-base",
@@ -2772,7 +2898,14 @@
                                                     "name":  "--fork-point",
                                                     "tooltip":  "find where \u003ccommit\u003e forked from reflog of \u003cref\u003e"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[-a | --all] \u003ccommit\u003e \u003ccommit\u003e...",
+                                           "[-a | --all] --octopus \u003ccommit\u003e...",
+                                           "--independent \u003ccommit\u003e...",
+                                           "--is-ancestor \u003ccommit\u003e \u003ccommit\u003e",
+                                           "--fork-point \u003cref\u003e [\u003ccommit\u003e]"
+                                       ]
                          },
                          {
                              "command":  "merge-file",
@@ -2813,35 +2946,46 @@
                                                     "tooltip":  "set labels for file1/orig-file/file2",
                                                     "argument_type":  "name"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] [-L \u003cname1\u003e [-L \u003corig\u003e [-L \u003cname2\u003e]]] \u003cfile1\u003e \u003corig-file\u003e \u003cfile2\u003e"
                          },
                          {
-                             "command":  "merge-index"
+                             "command":  "merge-index",
+                             "usage":  "[-o] [-q] \u003cmerge-program\u003e (-a | [--] [\u003cfilename\u003e...])"
                          },
                          {
                              "command":  "merge-octopus"
                          },
                          {
-                             "command":  "merge-one-file"
+                             "command":  "merge-one-file",
+                             "usage":  [
+                                           "\u003corig blob\u003e \u003cour blob\u003e \u003ctheir blob\u003e \u003cpath\u003e \u003corig mode\u003e \u003cour mode\u003e \u003ctheir mode\u003e",
+                                           "\u003corig blob\u003e \u003cour blob\u003e \u003ctheir blob\u003e \u003cpath\u003e \u003corig mode\u003e \u003cour mode\u003e \u003ctheir mode\u003e"
+                                       ]
                          },
                          {
-                             "command":  "merge-ours"
+                             "command":  "merge-ours",
+                             "usage":  "\u003cbase\u003e... -- HEAD \u003cremote\u003e..."
                          },
                          {
-                             "command":  "merge-recursive"
+                             "command":  "merge-recursive",
+                             "usage":  "\u003cbase\u003e... -- \u003chead\u003e \u003cremote\u003e ..."
                          },
                          {
                              "command":  "merge-resolve",
                              "aliased_to":  "read-tree"
                          },
                          {
-                             "command":  "merge-subtree"
+                             "command":  "merge-subtree",
+                             "usage":  "\u003cbase\u003e... -- \u003chead\u003e \u003cremote\u003e ..."
                          },
                          {
-                             "command":  "mergetool"
+                             "command":  "mergetool",
+                             "usage":  "[--tool=tool] [--tool-help] [-y|--no-prompt|--prompt] [file to merge] ..."
                          },
                          {
-                             "command":  "merge-tree"
+                             "command":  "merge-tree",
+                             "usage":  "\u003cbase-tree\u003e \u003cbranch1\u003e \u003cbranch2\u003e"
                          },
                          {
                              "command":  "mktag"
@@ -2861,7 +3005,8 @@
                                                     "name":  "--batch",
                                                     "tooltip":  "allow creation of more than one tree"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[-z] [--missing] [--batch]"
                          },
                          {
                              "command":  "mv",
@@ -2885,7 +3030,8 @@
                                                     "name":  "-k",
                                                     "tooltip":  "skip move/rename errors"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] \u003csource\u003e... \u003cdestination\u003e"
                          },
                          {
                              "command":  "name-rev",
@@ -2919,7 +3065,12 @@
                                                     "name":  "--always",
                                                     "tooltip":  "show abbreviated commit object as fallback"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[\u003coptions\u003e] \u003ccommit\u003e...",
+                                           "[\u003coptions\u003e] --all",
+                                           "[\u003coptions\u003e] --stdin"
+                                       ]
                          },
                          {
                              "command":  "notes",
@@ -2930,33 +3081,59 @@
                                             },
                              "sub_commands":  [
                                                   {
-                                                      "command":  "add"
+                                                      "command":  "add",
+                                                      "usage":  "[-f] [--allow-empty] [-m \u003cmsg\u003e | -F \u003cfile\u003e | (-c | -C) \u003cobject\u003e] [\u003cobject\u003e]"
                                                   },
                                                   {
-                                                      "command":  "append"
+                                                      "command":  "append",
+                                                      "usage":  "[--allow-empty] [-m \u003cmsg\u003e | -F \u003cfile\u003e | (-c | -C) \u003cobject\u003e] [\u003cobject\u003e]"
                                                   },
                                                   {
-                                                      "command":  "copy"
+                                                      "command":  "copy",
+                                                      "usage":  "[-f] \u003cfrom-object\u003e \u003cto-object\u003e"
                                                   },
                                                   {
-                                                      "command":  "edit"
+                                                      "command":  "edit",
+                                                      "usage":  "[--allow-empty] [\u003cobject\u003e]"
                                                   },
                                                   {
                                                       "command":  "get-ref"
                                                   },
                                                   {
-                                                      "command":  "merge"
+                                                      "command":  "merge",
+                                                      "usage":  [
+                                                                    "[-v | -q] [-s \u003cstrategy\u003e] \u003cnotes-ref\u003e",
+                                                                    "--commit [-v | -q]",
+                                                                    "--abort [-v | -q]"
+                                                                ]
                                                   },
                                                   {
-                                                      "command":  "prune"
+                                                      "command":  "prune",
+                                                      "usage":  "[-n | -v]"
                                                   },
                                                   {
-                                                      "command":  "remove"
+                                                      "command":  "remove",
+                                                      "usage":  "[\u003cobject\u003e...]"
                                                   },
                                                   {
-                                                      "command":  "show"
+                                                      "command":  "show",
+                                                      "usage":  "[\u003cobject\u003e]"
                                                   }
-                                              ]
+                                              ],
+                             "usage":  [
+                                           "[--ref \u003cnotes-ref\u003e] [list [\u003cobject\u003e]]",
+                                           "[--ref \u003cnotes-ref\u003e] add [-f] [--allow-empty] [-m \u003cmsg\u003e | -F \u003cfile\u003e | (-c | -C) \u003cobject\u003e] [\u003cobject\u003e]",
+                                           "[--ref \u003cnotes-ref\u003e] copy [-f] \u003cfrom-object\u003e \u003cto-object\u003e",
+                                           "[--ref \u003cnotes-ref\u003e] append [--allow-empty] [-m \u003cmsg\u003e | -F \u003cfile\u003e | (-c | -C) \u003cobject\u003e] [\u003cobject\u003e]",
+                                           "[--ref \u003cnotes-ref\u003e] edit [--allow-empty] [\u003cobject\u003e]",
+                                           "[--ref \u003cnotes-ref\u003e] show [\u003cobject\u003e]",
+                                           "[--ref \u003cnotes-ref\u003e] merge [-v | -q] [-s \u003cstrategy\u003e] \u003cnotes-ref\u003e",
+                                           "merge --commit [-v | -q]",
+                                           "merge --abort [-v | -q]",
+                                           "[--ref \u003cnotes-ref\u003e] remove [\u003cobject\u003e...]",
+                                           "[--ref \u003cnotes-ref\u003e] prune [-n | -v]",
+                                           "[--ref \u003cnotes-ref\u003e] get-ref"
+                                       ]
                          },
                          {
                              "command":  "p4"
@@ -3101,10 +3278,15 @@
                                                     "name":  "--write-bitmap-index",
                                                     "tooltip":  "write a bitmap index together with the pack index"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "--stdout [\u003coptions\u003e...] [\u003c \u003cref-list\u003e | \u003c \u003cobject-list\u003e]",
+                                           "[\u003coptions\u003e...] \u003cbase-name\u003e [\u003c \u003cref-list\u003e | \u003c \u003cobject-list\u003e]"
+                                       ]
                          },
                          {
-                             "command":  "pack-redundant"
+                             "command":  "pack-redundant",
+                             "usage":  "[--verbose] [--alt-odb] (--all | \u003cfilename.pack\u003e...)"
                          },
                          {
                              "command":  "pack-refs",
@@ -3117,10 +3299,12 @@
                                                     "name":  "--prune",
                                                     "tooltip":  "prune loose refs (default)"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e]"
                          },
                          {
-                             "command":  "patch-id"
+                             "command":  "patch-id",
+                             "usage":  "[--stable | --unstable]"
                          },
                          {
                              "command":  "prune",
@@ -3144,7 +3328,8 @@
                                                     "tooltip":  "expire objects older than \u003ctime\u003e",
                                                     "argument_type":  "expiry-date"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[-n] [-v] [--expire \u003ctime\u003e] [--] [\u003chead\u003e...]"
                          },
                          {
                              "command":  "prune-packed",
@@ -3159,7 +3344,8 @@
                                                     "tooltip":  "be quiet",
                                                     "alias":  "-q"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[-n | --dry-run] [-q | --quiet]"
                          },
                          {
                              "command":  "pull",
@@ -3296,7 +3482,8 @@
                                                     "tooltip":  "specify fetch refmap",
                                                     "argument_type":  "refmap"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] [\u003crepository\u003e [\u003crefspec\u003e...]]"
                          },
                          {
                              "command":  "push",
@@ -3385,7 +3572,8 @@
                                                     "name":  "--atomic",
                                                     "tooltip":  "request atomic transaction on remote side"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] [\u003crepository\u003e [\u003crefspec\u003e...]]"
                          },
                          {
                              "command":  "quiltimport",
@@ -3405,7 +3593,8 @@
                                                     "tooltip":  "path to the quilt series and patches",
                                                     "argument_type":  "..."
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[options]"
                          },
                          {
                              "command":  "read-tree",
@@ -3470,7 +3659,8 @@
                                                     "name":  "--debug-unpack",
                                                     "tooltip":  "debug unpack-trees"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[(-m [--trivial] [--aggressive] | --reset | --prefix=\u003cprefix\u003e) [-u [--exclude-per-directory=\u003cgitignore\u003e] | -i]] [--no-sparse-checkout] [--index-output=\u003cfile\u003e] (--empty | \u003ctree-ish1\u003e [\u003ctree-ish2\u003e [\u003ctree-ish3\u003e]])"
                          },
                          {
                              "command":  "rebase",
@@ -3615,16 +3805,24 @@
                                                     "name":  "--edit-todo",
                                                     "tooltip":  "edit the todo list during an interactive rebase"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[-i] [options] [--exec \u003ccmd\u003e] [--onto \u003cnewbase\u003e] [\u003cupstream\u003e] [\u003cbranch\u003e]",
+                                           "[-i] [options] [--exec \u003ccmd\u003e] [--onto \u003cnewbase\u003e] --root [\u003cbranch\u003e]",
+                                           "--continue | --abort | --skip | --edit-todo"
+                                       ]
                          },
                          {
-                             "command":  "receive-pack"
+                             "command":  "receive-pack",
+                             "usage":  "\u003cgit-dir\u003e"
                          },
                          {
-                             "command":  "reflog"
+                             "command":  "reflog",
+                             "usage":  "[ show | expire | delete | exists ]"
                          },
                          {
-                             "command":  "relink"
+                             "command":  "relink",
+                             "usage":  "[--safe] \u003cdir\u003e... \u003cmaster_dir\u003e"
                          },
                          {
                              "command":  "remote",
@@ -3635,33 +3833,60 @@
                                             },
                              "sub_commands":  [
                                                   {
-                                                      "command":  "add"
+                                                      "command":  "add",
+                                                      "usage":  "[-t \u003cbranch\u003e] [-m \u003cmaster\u003e] [-f] [--tags | --no-tags] [--mirror=\u003cfetch|push\u003e] \u003cname\u003e \u003curl\u003e"
                                                   },
                                                   {
-                                                      "command":  "prune"
+                                                      "command":  "prune",
+                                                      "usage":  "[-n | --dry-run] \u003cname\u003e"
                                                   },
                                                   {
-                                                      "command":  "remove"
+                                                      "command":  "remove",
+                                                      "usage":  "\u003cname\u003e"
                                                   },
                                                   {
-                                                      "command":  "rename"
+                                                      "command":  "rename",
+                                                      "usage":  "\u003cold\u003e \u003cnew\u003e"
                                                   },
                                                   {
-                                                      "command":  "set-branches"
+                                                      "command":  "set-branches",
+                                                      "usage":  "[--add] \u003cname\u003e \u003cbranch\u003e..."
                                                   },
                                                   {
-                                                      "command":  "set-head"
+                                                      "command":  "set-head",
+                                                      "usage":  "\u003cname\u003e (-a | --auto | -d | --delete | \u003cbranch\u003e)"
                                                   },
                                                   {
-                                                      "command":  "set-url"
+                                                      "command":  "set-url",
+                                                      "usage":  [
+                                                                    "[--push] \u003cname\u003e \u003cnewurl\u003e [\u003coldurl\u003e]",
+                                                                    "--add \u003cname\u003e \u003cnewurl\u003e",
+                                                                    "--delete \u003cname\u003e \u003curl\u003e"
+                                                                ]
                                                   },
                                                   {
-                                                      "command":  "show"
+                                                      "command":  "show",
+                                                      "usage":  "[-n] \u003cname\u003e"
                                                   },
                                                   {
-                                                      "command":  "update"
+                                                      "command":  "update",
+                                                      "usage":  "[-p | --prune] [(\u003cgroup\u003e | \u003cremote\u003e)...]"
                                                   }
-                                              ]
+                                              ],
+                             "usage":  [
+                                           "[-v | --verbose]",
+                                           "add [-t \u003cbranch\u003e] [-m \u003cmaster\u003e] [-f] [--tags | --no-tags] [--mirror=\u003cfetch|push\u003e] \u003cname\u003e \u003curl\u003e",
+                                           "rename \u003cold\u003e \u003cnew\u003e",
+                                           "remove \u003cname\u003e",
+                                           "set-head \u003cname\u003e (-a | --auto | -d | --delete | \u003cbranch\u003e)",
+                                           "[-v | --verbose] show [-n] \u003cname\u003e",
+                                           "prune [-n | --dry-run] \u003cname\u003e",
+                                           "[-v | --verbose] update [-p | --prune] [(\u003cgroup\u003e | \u003cremote\u003e)...]",
+                                           "set-branches [--add] \u003cname\u003e \u003cbranch\u003e...",
+                                           "set-url [--push] \u003cname\u003e \u003cnewurl\u003e [\u003coldurl\u003e]",
+                                           "set-url --add \u003cname\u003e \u003cnewurl\u003e",
+                                           "set-url --delete \u003cname\u003e \u003curl\u003e"
+                                       ]
                          },
                          {
                              "command":  "remote-ext"
@@ -3752,7 +3977,8 @@
                                                     "name":  "--pack-kept-objects",
                                                     "tooltip":  "repack objects in packs marked with .keep"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e]"
                          },
                          {
                              "command":  "replace",
@@ -3791,21 +4017,30 @@
                                                     "tooltip":  "use this format",
                                                     "argument_type":  "format"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[-f] \u003cobject\u003e \u003creplacement\u003e",
+                                           "[-f] --edit \u003cobject\u003e",
+                                           "[-f] --graft \u003ccommit\u003e [\u003cparent\u003e...]",
+                                           "-d \u003cobject\u003e...",
+                                           "[--format=\u003cformat\u003e] [-l [\u003cpattern\u003e]]"
+                                       ]
                          },
                          {
                              "command":  "request-pull",
                              "parameters":  {
                                                 "name":  "-p",
                                                 "tooltip":  "show patch text as well"
-                                            }
+                                            },
+                             "usage":  "[options] start url [end]"
                          },
                          {
                              "command":  "rerere",
                              "parameters":  {
                                                 "name":  "--rerere-autoupdate",
                                                 "tooltip":  "register clean resolutions in index"
-                                            }
+                                            },
+                             "usage":  "[clear | forget \u003cpath\u003e... | status | remaining | diff | gc]"
                          },
                          {
                              "command":  "reset",
@@ -3845,7 +4080,12 @@
                                                     "tooltip":  "record only the fact that removed paths will be added later",
                                                     "alias":  "-N"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[--mixed | --soft | --hard | --merge | --keep] [-q] [\u003ccommit\u003e]",
+                                           "[-q] \u003ctree-ish\u003e [--] \u003cpaths\u003e...",
+                                           "--patch [\u003ctree-ish\u003e] [--] [\u003cpaths\u003e...]"
+                                       ]
                          },
                          {
                              "command":  "revert",
@@ -3905,7 +4145,11 @@
                                                     "argument_type":  "key-id",
                                                     "argument_optional":  true
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[\u003coptions\u003e] \u003ccommit-ish\u003e...",
+                                           "\u003csubcommand\u003e"
+                                       ]
                          },
                          {
                              "command":  "rev-list",
@@ -3987,10 +4231,16 @@
                                                 {
                                                     "name":  "--bisect-all"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[OPTION] \u003ccommit-id\u003e... [ -- paths... ]"
                          },
                          {
-                             "command":  "rev-parse"
+                             "command":  "rev-parse",
+                             "usage":  [
+                                           "--parseopt [\u003coptions\u003e] -- [\u003cargs\u003e...]",
+                                           "--sq-quote [\u003carg\u003e...]",
+                                           "[\u003coptions\u003e] [\u003carg\u003e...]"
+                                       ]
                          },
                          {
                              "command":  "rm",
@@ -4022,7 +4272,8 @@
                                                     "name":  "--ignore-unmatch",
                                                     "tooltip":  "exit with a zero status even if nothing matched"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] [--] \u003cfile\u003e..."
                          },
                          {
                              "command":  "send-email",
@@ -4207,7 +4458,8 @@
                                                     "name":  "--helper-status",
                                                     "tooltip":  "print status from remote helper"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[--all | --mirror] [--dry-run] [--force] [--receive-pack=\u003cgit-receive-pack\u003e] [--verbose] [--thin] [--atomic] [\u003chost\u003e:]\u003cdirectory\u003e [\u003cref\u003e...]"
                          },
                          {
                              "command":  "sh-i18n--envsubst"
@@ -4230,7 +4482,8 @@
                                                     "tooltip":  "Show the email address of each author",
                                                     "alias":  "-e"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] [\u003crevision-range\u003e] [[--] [\u003cpath\u003e...]]"
                          },
                          {
                              "command":  "show",
@@ -4258,7 +4511,11 @@
                                                     "name":  "-L",
                                                     "tooltip":  "\u003cn,m:file\u003e         Process line range n,m in file, counting from 1"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[\u003coptions\u003e] [\u003crevision-range\u003e] [[--] \u003cpath\u003e...]",
+                                           "[\u003coptions\u003e] \u003cobject\u003e..."
+                                       ]
                          },
                          {
                              "command":  "show-branch",
@@ -4325,7 +4582,11 @@
                                                     "name":  "--date-order",
                                                     "tooltip":  "topologically sort, maintaining date order where possible"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[-a | --all] [-r | --remotes] [--topo-order | --date-order]",
+                                           "(-g | --reflog)[=\u003cn\u003e[,\u003cbase\u003e]] [--list] [\u003cref\u003e]"
+                                       ]
                          },
                          {
                              "command":  "show-index"
@@ -4378,7 +4639,11 @@
                                                     "argument_type":  "pattern",
                                                     "argument_optional":  true
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[-q | --quiet] [--verify] [--head] [-d | --dereference] [-s | --hash[=\u003cn\u003e]] [--abbrev[=\u003cn\u003e]] [--tags] [--heads] [--] [\u003cpattern\u003e...]",
+                                           "--exclude-existing[=\u003cpattern\u003e]"
+                                       ]
                          },
                          {
                              "command":  "stage",
@@ -4388,21 +4653,34 @@
                              "command":  "stash",
                              "sub_commands":  [
                                                   {
-                                                      "command":  "branch"
+                                                      "command":  "branch",
+                                                      "usage":  "\u003cbranchname\u003e [\u003cstash\u003e]"
                                                   },
                                                   {
                                                       "command":  "clear"
                                                   },
                                                   {
-                                                      "command":  "drop"
+                                                      "command":  "drop",
+                                                      "usage":  "[-q|--quiet] [\u003cstash\u003e]"
                                                   },
                                                   {
-                                                      "command":  "list"
+                                                      "command":  "list",
+                                                      "usage":  "[\u003coptions\u003e]"
                                                   },
                                                   {
-                                                      "command":  "show"
+                                                      "command":  "show",
+                                                      "usage":  "[\u003cstash\u003e]"
                                                   }
-                                              ]
+                                              ],
+                             "usage":  [
+                                           "list [\u003coptions\u003e]",
+                                           "show [\u003cstash\u003e]",
+                                           "drop [-q|--quiet] [\u003cstash\u003e]",
+                                           "( pop | apply ) [--index] [-q|--quiet] [\u003cstash\u003e]",
+                                           "branch \u003cbranchname\u003e [\u003cstash\u003e]",
+                                           "[save [--patch] [-k|--[no-]keep-index] [-q|--quiet]",
+                                           "clear"
+                                       ]
                          },
                          {
                              "command":  "status",
@@ -4458,7 +4736,8 @@
                                                     "argument_type":  "style",
                                                     "argument_optional":  true
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] [--] \u003cpathspec\u003e..."
                          },
                          {
                              "command":  "stripspace",
@@ -4473,36 +4752,58 @@
                                                     "tooltip":  "prepend comment character and blank to each line",
                                                     "alias":  "-c"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[-s | --strip-comments]",
+                                           "[-c | --comment-lines]"
+                                       ]
                          },
                          {
                              "command":  "submodule",
                              "sub_commands":  [
                                                   {
-                                                      "command":  "add"
+                                                      "command":  "add",
+                                                      "usage":  "[-b \u003cbranch\u003e] [-f|--force] [--name \u003cname\u003e] [--reference \u003crepository\u003e] [--] \u003crepository\u003e [\u003cpath\u003e]"
                                                   },
                                                   {
-                                                      "command":  "deinit"
+                                                      "command":  "deinit",
+                                                      "usage":  "[-f|--force] [--] \u003cpath\u003e..."
                                                   },
                                                   {
-                                                      "command":  "foreach"
+                                                      "command":  "foreach",
+                                                      "usage":  "[--recursive] \u003ccommand\u003e"
                                                   },
                                                   {
-                                                      "command":  "init"
+                                                      "command":  "init",
+                                                      "usage":  "[--] [\u003cpath\u003e...]"
                                                   },
                                                   {
-                                                      "command":  "status"
+                                                      "command":  "status",
+                                                      "usage":  "[--cached] [--recursive] [--] [\u003cpath\u003e...]"
                                                   },
                                                   {
-                                                      "command":  "summary"
+                                                      "command":  "summary",
+                                                      "usage":  "[--cached|--files] [--summary-limit \u003cn\u003e] [commit] [--] [\u003cpath\u003e...]"
                                                   },
                                                   {
-                                                      "command":  "sync"
+                                                      "command":  "sync",
+                                                      "usage":  "[--recursive] [--] [\u003cpath\u003e...]"
                                                   },
                                                   {
-                                                      "command":  "update"
+                                                      "command":  "update",
+                                                      "usage":  "[--init] [--remote] [-N|--no-fetch] [-f|--force] [--checkout|--merge|--rebase] [--reference \u003crepository\u003e] [--recursive] [--] [\u003cpath\u003e...]"
                                                   }
-                                              ]
+                                              ],
+                             "usage":  [
+                                           "[--quiet] add [-b \u003cbranch\u003e] [-f|--force] [--name \u003cname\u003e] [--reference \u003crepository\u003e] [--] \u003crepository\u003e [\u003cpath\u003e]",
+                                           "[--quiet] status [--cached] [--recursive] [--] [\u003cpath\u003e...]",
+                                           "[--quiet] init [--] [\u003cpath\u003e...]",
+                                           "[--quiet] deinit [-f|--force] [--] \u003cpath\u003e...",
+                                           "[--quiet] update [--init] [--remote] [-N|--no-fetch] [-f|--force] [--checkout|--merge|--rebase] [--reference \u003crepository\u003e] [--recursive] [--] [\u003cpath\u003e...]",
+                                           "[--quiet] summary [--cached|--files] [--summary-limit \u003cn\u003e] [commit] [--] [\u003cpath\u003e...]",
+                                           "[--quiet] foreach [--recursive] \u003ccommand\u003e",
+                                           "[--quiet] sync [--recursive] [--] [\u003cpath\u003e...]"
+                                       ]
                          },
                          {
                              "command":  "subtree",
@@ -4563,24 +4864,41 @@
                                             ],
                              "sub_commands":  [
                                                   {
-                                                      "command":  "add"
+                                                      "command":  "add",
+                                                      "usage":  [
+                                                                    "--prefix=\u003cprefix\u003e \u003ccommit\u003e",
+                                                                    "--prefix=\u003cprefix\u003e \u003crepository\u003e \u003cref\u003e"
+                                                                ]
                                                   },
                                                   {
-                                                      "command":  "merge"
+                                                      "command":  "merge",
+                                                      "usage":  "--prefix=\u003cprefix\u003e \u003ccommit\u003e"
                                                   },
                                                   {
-                                                      "command":  "pull"
+                                                      "command":  "pull",
+                                                      "usage":  "--prefix=\u003cprefix\u003e \u003crepository\u003e \u003cref\u003e"
                                                   },
                                                   {
-                                                      "command":  "push"
+                                                      "command":  "push",
+                                                      "usage":  "--prefix=\u003cprefix\u003e \u003crepository\u003e \u003cref\u003e"
                                                   },
                                                   {
-                                                      "command":  "split"
+                                                      "command":  "split",
+                                                      "usage":  "--prefix=\u003cprefix\u003e \u003ccommit...\u003e"
                                                   }
-                                              ]
+                                              ],
+                             "usage":  [
+                                           "add   --prefix=\u003cprefix\u003e \u003ccommit\u003e",
+                                           "add   --prefix=\u003cprefix\u003e \u003crepository\u003e \u003cref\u003e",
+                                           "merge --prefix=\u003cprefix\u003e \u003ccommit\u003e",
+                                           "pull  --prefix=\u003cprefix\u003e \u003crepository\u003e \u003cref\u003e",
+                                           "push  --prefix=\u003cprefix\u003e \u003crepository\u003e \u003cref\u003e",
+                                           "split --prefix=\u003cprefix\u003e \u003ccommit...\u003e"
+                                       ]
                          },
                          {
-                             "command":  "svn"
+                             "command":  "svn",
+                             "usage":  "\u003ccommand\u003e [options] [arguments]"
                          },
                          {
                              "command":  "symbolic-ref",
@@ -4604,7 +4922,11 @@
                                                     "tooltip":  "reason of the update",
                                                     "argument_type":  "reason"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[\u003coptions\u003e] \u003cname\u003e [\u003cref\u003e]",
+                                           "-d [-q] \u003cname\u003e"
+                                       ]
                          },
                          {
                              "command":  "tag",
@@ -4687,13 +5009,21 @@
                                                     "tooltip":  "print only tags of the object",
                                                     "argument_type":  "object"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[-a | -s | -u \u003ckey-id\u003e] [-f] [-m \u003cmsg\u003e | -F \u003cfile\u003e] \u003ctagname\u003e [\u003chead\u003e]",
+                                           "-d \u003ctagname\u003e...",
+                                           "-l [-n[\u003cnum\u003e]] [--contains \u003ccommit\u003e] [--points-at \u003cobject\u003e]",
+                                           "-v \u003ctagname\u003e..."
+                                       ]
                          },
                          {
-                             "command":  "unpack-file"
+                             "command":  "unpack-file",
+                             "usage":  "\u003csha1\u003e"
                          },
                          {
-                             "command":  "unpack-objects"
+                             "command":  "unpack-objects",
+                             "usage":  "[-n] [-q] [-r] [--strict]"
                          },
                          {
                              "command":  "update-index",
@@ -4812,7 +5142,8 @@
                                                     "name":  "--force-untracked-cache",
                                                     "tooltip":  "enable untracked cache without testing the filesystem"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[\u003coptions\u003e] [--] [\u003cfile\u003e...]"
                          },
                          {
                              "command":  "update-ref",
@@ -4842,7 +5173,12 @@
                                                     "name":  "--create-reflog",
                                                     "tooltip":  "create a reflog"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  [
+                                           "[\u003coptions\u003e] -d \u003crefname\u003e [\u003cold-val\u003e]",
+                                           "[\u003coptions\u003e]    \u003crefname\u003e \u003cnew-val\u003e [\u003cold-val\u003e]",
+                                           "[\u003coptions\u003e] --stdin [-z]"
+                                       ]
                          },
                          {
                              "command":  "update-server-info",
@@ -4850,16 +5186,19 @@
                                                 "name":  "--force",
                                                 "tooltip":  "update the info files from scratch",
                                                 "alias":  "-f"
-                                            }
+                                            },
+                             "usage":  "[--force]"
                          },
                          {
                              "command":  "upload-archive"
                          },
                          {
-                             "command":  "upload-pack"
+                             "command":  "upload-pack",
+                             "usage":  "[--strict] [--timeout=\u003cn\u003e] \u003cdir\u003e"
                          },
                          {
-                             "command":  "var"
+                             "command":  "var",
+                             "usage":  "(-l | \u003cvariable\u003e)"
                          },
                          {
                              "command":  "verify-commit",
@@ -4873,7 +5212,8 @@
                                                     "name":  "--raw",
                                                     "tooltip":  "print raw gpg status output"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[-v | --verbose] \u003ccommit\u003e..."
                          },
                          {
                              "command":  "verify-pack",
@@ -4888,7 +5228,8 @@
                                                     "tooltip":  "show statistics only",
                                                     "alias":  "-s"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[-v | --verbose] [-s | --stat-only] \u003cpack\u003e..."
                          },
                          {
                              "command":  "verify-tag",
@@ -4902,10 +5243,12 @@
                                                     "name":  "--raw",
                                                     "tooltip":  "print raw gpg status output"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[-v | --verbose] \u003ctag\u003e..."
                          },
                          {
-                             "command":  "web--browse"
+                             "command":  "web--browse",
+                             "usage":  "[--browser=browser|--tool=browser] [--config=conf.var] url/file ..."
                          },
                          {
                              "command":  "whatchanged",
@@ -4918,12 +5261,18 @@
                              "command":  "worktree",
                              "sub_commands":  [
                                                   {
-                                                      "command":  "add"
+                                                      "command":  "add",
+                                                      "usage":  "[\u003coptions\u003e] \u003cpath\u003e [\u003cbranch\u003e]"
                                                   },
                                                   {
-                                                      "command":  "prune"
+                                                      "command":  "prune",
+                                                      "usage":  "[\u003coptions\u003e]"
                                                   }
-                                              ]
+                                              ],
+                             "usage":  [
+                                           "add [\u003coptions\u003e] \u003cpath\u003e [\u003cbranch\u003e]",
+                                           "prune [\u003coptions\u003e]"
+                                       ]
                          },
                          {
                              "command":  "write-tree",
@@ -4936,7 +5285,8 @@
                                                     "name":  "--prefix",
                                                     "tooltip":  "\u003cprefix\u003e/    write tree object for a subdirectory \u003cprefix\u003e"
                                                 }
-                                            ]
+                                            ],
+                             "usage":  "[--missing-ok] [--prefix=\u003cprefix\u003e/]"
                          }
                      ]
 }

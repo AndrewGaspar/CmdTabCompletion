@@ -83,6 +83,12 @@ function TransformGitCommand($gitCommand)
         {
             $command_obj | Add-Member -NotePropertyName sub_commands -NotePropertyValue $sub_commands
         }
+        
+        $usage = $gitCommand.Usage.Usage | Where-Object { $_ }
+        
+        if($usage) {
+            $command_obj | Add-Member -NotePropertyName usage -NotePropertyValue $usage
+        }
     }
     
     $command_obj
