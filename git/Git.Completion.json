@@ -1,5 +1,6 @@
 ﻿{
     "command":  "git",
+    "usage":  "[--version] [--help] [-C \u003cpath\u003e] [-c name=value] [--exec-path[=\u003cpath\u003e]] [--html-path] [--man-path] [--info-path] [-p | --paginate | --no-pager] [--no-replace-objects] [--bare] [--git-dir=\u003cpath\u003e] [--work-tree=\u003cpath\u003e] [--namespace=\u003cname\u003e] \u003ccommand\u003e [\u003cargs\u003e]",
     "sub_commands":  [
                          {
                              "command":  "add",

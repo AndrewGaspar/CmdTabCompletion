@@ -94,6 +94,8 @@ function TransformGitCommand($gitCommand)
     $command_obj
 }
 
+$preGeneration | Add-Member -NotePropertyName usage -NotePropertyValue (Get-GitUsage)
+
 $sub_commands = Get-GitCommand | 
     ForEach-Object {
         TransformGitCommand $_
