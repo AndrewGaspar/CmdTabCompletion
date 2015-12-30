@@ -34,7 +34,7 @@ function PoshNativeCompleteCommand {
     }
 }
 
-function Register-NativeTabCompletion {
+function Register-CmdTabCompletion {
     Param(
         [Parameter(Mandatory=$true, ValueFromPipeline=$True)]
         [TabCompletionDescription]$Description
@@ -51,7 +51,7 @@ function Register-NativeTabCompletion {
                 $commandAst,
                 $cursor)
                 
-            $commandDescription = Get-NativeTabCompletion $commandAst.GetCommandName()
+            $commandDescription = Get-CmdTabCompletion $commandAst.GetCommandName()
             
             PoshNativeCompleteCommand $wordToComplete $commandAst $cursor 1 $commandDescription
         }
@@ -98,7 +98,7 @@ function ParseCompletionDescription {
     }
 }
 
-function Read-NativeTabCompletion {
+function Read-CmdTabCompletion {
     Param(
         [Parameter(Mandatory=$True, ValueFromPipeline=$True)]
         [string]$Path
@@ -107,7 +107,7 @@ function Read-NativeTabCompletion {
     Get-Content $Path | ConvertFrom-Json | ParseCompletionDescription 
 }
 
-function Get-NativeTabCompletion {
+function Get-CmdTabCompletion {
     Param(
         [string]$CommandName = "*"
     )
