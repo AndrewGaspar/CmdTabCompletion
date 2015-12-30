@@ -1,2 +1,2 @@
-# NativeTabCompletion
-Provides a mechanism for describing native Windows commands for tab completion in PowerShell.
+# CmdTabCompletion
+Provides a mechanism for describing native cmd commands for tab completion in PowerShell.
