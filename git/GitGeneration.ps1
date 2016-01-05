@@ -1,3 +1,5 @@
+using module GitPS
+
 Param([string]$preGenerationLocation, [string]$completionLocation)
 
 $scriptPath = Split-Path $PSCommandPath

@@ -1,16 +1,5 @@
-class ParameterDescription {
-    [string]$Name
-    [string]$Alias
-    [string]$Tooltip
-    [string]$ArgumentType
-    [bool]$IsArgumentOptional
-}
-
-class TabCompletionDescription {
-    [string]$Command
-    [TabCompletionDescription[]]$SubCommands
-    [ParameterDescription[]]$Parameters
-}
+using module CmdUsageSyntax
+using module TabExpansionPlusPlus
 
 $Script:CompletionRegistrations = @{}
 
@@ -20,30 +9,47 @@ function PoshNativeCompleteCommand {
         $commandAst,
         $cursor,
         $depth,
-        [TabCompletionDescription]$commandDescription
+        [PSCustomObject]$commandDescription
     )
     
-    foreach($subCommand in $commandDescription.SubCommands)
-    {
-        [System.Management.Automation.CompletionResult]::new(
-            $subCommand.Command,
-            $subCommand.Command,
-            "Command",
-            $subCommand.Command
-        )
+    if($commandAst.CommandElements.Count -eq 1) {
+        $usage = "$($commandDescription.command) $($commandDescription.usage)" | New-CmdUsageSyntaxNode | Format-CmdUsageSyntax
+        
+        foreach($element in $usage.Elements) {
+            if($element -is [ParameterUsage]) {
+                New-CompletionResult $element.Parameter $element.Parameter
+                
+                # [System.Management.Automation.CompletionResult]::new(
+                #     $element.Parameter,
+                #     $element.Parameter,
+                #     "Parameter",
+                #     $element.Parameter
+                # )
+            }
+        }
+    
+        foreach($subCommand in $commandDescription.sub_commands)
+        {
+            [System.Management.Automation.CompletionResult]::new(
+                $subCommand.command,
+                $subCommand.command,
+                "Command",
+                $subCommand.command
+            )
+        }
     }
 }
 
 function Register-CmdTabCompletion {
     Param(
         [Parameter(Mandatory=$true, ValueFromPipeline=$True)]
-        [TabCompletionDescription]$Description
+        [PSCustomObject]$Description
     )
     
     $Script:CompletionRegistrations[$Description.command] = $Description
     
     Register-ArgumentCompleter `
-        -CommandName $Description.Command `
+        -CommandName $Description.command `
         -Native `
         -ScriptBlock {
             Param(
@@ -57,54 +63,13 @@ function Register-CmdTabCompletion {
         }
 }
 
-function ParseCompletionDescription {
-    Param(
-        [Parameter(
-            Mandatory=$True, 
-            ValueFromPipeline=$True,
-            ValueFromPipelineByPropertyName)]
-        [PSCustomObject]
-        $Descriptions)
-
-    $Descriptions | ForEach-Object {
-        $completionDescription = [TabCompletionDescription]::new()
-        
-        $completionDescription.Command = $_.command
-        if($_.sub_commands)
-        {
-            $completionDescription.SubCommands = $_.sub_commands |
-                Sort-Object -Property Command | 
-                ForEach-Object {
-                    ParseCompletionDescription $_
-                }
-        }
-        
-        if($_.parameters)
-        {
-            $completionDescription.Parameters = $_.parameters | ForEach-Object {
-                $parameterDescription = [ParameterDescription]::new()
-                
-                $parameterDescription.Name = $_.name
-                $parameterDescription.Alias = $_.alias
-                $parameterDescription.Tooltip = $_.tooltip
-                $parameterDescription.ArgumentType = $_.argument_type
-                $parameterDescription.IsArgumentOptional = $_.argument_optional
-                
-                $parameterDescription
-            }
-        }
-        
-        $completionDescription
-    }
-}
-
 function Read-CmdTabCompletion {
     Param(
         [Parameter(Mandatory=$True, ValueFromPipeline=$True)]
         [string]$Path
     )
     
-    Get-Content $Path | ConvertFrom-Json | ParseCompletionDescription 
+    Get-Content $Path | ConvertFrom-Json 
 }
 
 function Get-CmdTabCompletion {
