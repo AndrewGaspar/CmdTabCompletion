@@ -12,31 +12,34 @@ function PoshNativeCompleteCommand {
         [PSCustomObject]$commandDescription
     )
     
-    if($commandAst.CommandElements.Count -eq 1) {
+    if($commandAst.CommandElements.Count -le 2) {
         $usage = "$($commandDescription.command) $($commandDescription.usage)" | New-CmdUsageSyntaxNode | Format-CmdUsageSyntax
         
-        foreach($element in $usage.Elements) {
-            if($element -is [ParameterUsage]) {
-                New-CompletionResult $element.Parameter $element.Parameter
-                
-                # [System.Management.Automation.CompletionResult]::new(
-                #     $element.Parameter,
-                #     $element.Parameter,
-                #     "Parameter",
-                #     $element.Parameter
-                # )
+        & {
+        
+            foreach($element in $usage.Elements) {
+                if($element -is [ParameterUsage]) {
+                    New-CompletionResult $element.Parameter $element.Parameter
+                    
+                    # [System.Management.Automation.CompletionResult]::new(
+                    #     $element.Parameter,
+                    #     $element.Parameter,
+                    #     "Parameter",
+                    #     $element.Parameter
+                    # )
+                }
             }
-        }
-    
-        foreach($subCommand in $commandDescription.sub_commands)
-        {
-            [System.Management.Automation.CompletionResult]::new(
-                $subCommand.command,
-                $subCommand.command,
-                "Command",
-                $subCommand.command
-            )
-        }
+        
+            foreach($subCommand in $commandDescription.sub_commands)
+            {
+                [System.Management.Automation.CompletionResult]::new(
+                    $subCommand.command,
+                    $subCommand.command,
+                    "Command",
+                    $subCommand.command
+                )
+            }
+        } | ? { $_.CompletionText -like "$wordToComplete*"}
     }
 }
 
